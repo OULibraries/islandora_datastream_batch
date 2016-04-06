@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Implements hook_menu().
+ *
+ * @return string
+ */
+
+define('ISLANDORA_EMBED_PATH', 'islandora/embed/object/%islandora_object');
+
+function islandora_datastream_batch_menu() {
+  $items = array();
+  $items['embed_service/uuid'] = array(
+    'title' => 'Islandora ',
+    'description' => "",
+    'page callback' => '',
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+  );
+  return $items;
+}

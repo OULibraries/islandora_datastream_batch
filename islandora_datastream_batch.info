@@ -1,0 +1,6 @@
+name = Islandora Datastream Batch
+description = Batch editing Islandora datastreams.
+dependencies[] = islandora
+package = Islandora
+version = 7.x-1.5
+core = 7.x
