@@ -1,4 +1,3 @@
-## Note: this module is an early-stage work-in-progress.
 
 ## Introduction
 
