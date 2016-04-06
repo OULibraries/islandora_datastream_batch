@@ -5,10 +5,10 @@ This module provides functions to batch download, delete, or replace some or all
 
 How to use:
 
-download to /tmp/collection_pid:
+download to /tmp/collection_pid:<br>
 drush -u 1 --root=/var/www/drupal -l http://localhost islandora_collection_objects_datastream_batch collection_pid 1 MODS
 
-replace from /tmp/collection_pid:
+replace from /tmp/collection_pid:<br>
 drush -u 1 --root=/var/www/drupal -l http://localhost islandora_collection_objects_datastream_batch collection_pid 1 MODS
 
 Notes:
