@@ -78,7 +78,7 @@ function islandora_collection_objects_datastream_batch_drush($pid, $opera, $data
  * @param type $member_pid : object PID
  * @param type $datastream_types : RELS-EXT,MODS,DC,TN,PDF, or ALL for all types; 
  *                                 Multiple types are separated by comma: e.g. can type in 'MODS,TN' for MODS and TN types
- * @param type $opera : 1 => download; 2 => delete; 3 => replace
+ * @param type $opera : 1 => download; 2 => replace; 3 => delete; 
  * @param type $member_object_path : the path to store the downloaded datastream files
  * 
  * 
@@ -86,8 +86,18 @@ function islandora_collection_objects_datastream_batch_drush($pid, $opera, $data
 function process_datastream_operations($member_pid, $datastream_types, $opera, $member_object_path){
     foreach ($datastream_types as $type){
         $datastream_object = islandora_datastream_load($type, $member_pid);
-        //replace_datastream($datastream_object, $member_pid, $member_object_path);
-        download_datastream($datastream_object, $member_object_path, NULL);
+        switch($opera){
+            case "1" :   download_datastream($datastream_object, $member_object_path, NULL);
+                        break;
+            case "2" :   replace_datastream($datastream_object, $member_pid, $member_object_path);
+                        break;
+            case "3" :  // not implemented yet.
+                        break;
+            default :   print("\n Wrong operation parameter!\n");
+                        exit();
+                        break;
+        }
+        
     }
 }
 
@@ -173,7 +183,6 @@ function replace_datastream(AbstractDatastream $ds, $object_id, $file_path){
     $object = islandora_object_load($object_id);
     $form_state['redirect'] = "islandora/object/{$object->id}";
     $file = $file_path . "/" . get_datastream_filename($ds);
-    
     try {
       $ds->setContentFromFile($file);
     }
